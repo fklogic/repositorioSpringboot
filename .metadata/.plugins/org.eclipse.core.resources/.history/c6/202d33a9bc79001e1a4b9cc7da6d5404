@@ -1,0 +1,12 @@
+package com.pruebasodexo.responce;
+
+import com.pruebasodexo.models.Noticias;
+
+public class NoticiasResponse {
+
+	public void setNoticias(Iterable<Noticias> noticias) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
