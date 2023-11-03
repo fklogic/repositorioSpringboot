@@ -17,14 +17,16 @@ import dao.NoticiasDao;
 import jakarta.transaction.Transactional;
 
 public class NoticiasServiceImp implements INoticiasService{
-private static final Logger log = (Logger) LoggerFactory.getLogger(NoticiasServiceImpl.class);
+private static final Logger Logger = null;
+
+private static final Logger log = (Logger));
 	
 	@Autowired
 	private NoticiasDao nDao;
 
 	@Override
 	@Transactional(dontRollbackOn = true)
-	public ResponseEntity<NoticiasResponseRest> obtenerFavoritos() {
+	public ResponseEntity<NoticiasResponseRest> obtenerfavs() {
 		log.info("Inicio método obtenerFavoritos()");
 		NoticiasResponseRest response = new NoticiasResponseRest();
 		try {
@@ -49,7 +51,7 @@ private static final Logger log = (Logger) LoggerFactory.getLogger(NoticiasServi
 
 	@Override
 	@Transactional(dontRollbackOn = true)
-	public ResponseEntity<NoticiasResponseRest> buscarFavoritosPorTitulo(String title) {
+	public ResponseEntity<NoticiasResponseRest> findnoticiabyname(String title) {
 		log.info("Inicio método buscarFavoritosPorTitulo");
 		NoticiasResponseRest response = new NoticiasResponseRest();
 		try {
@@ -73,7 +75,7 @@ private static final Logger log = (Logger) LoggerFactory.getLogger(NoticiasServi
 
 	@Override
 	@Transactional
-	public ResponseEntity<NoticiasResponseRest> actualizarFavoritos(Noticias noticias, Long idFavorite) {
+	public ResponseEntity<NoticiasResponseRest> actfav(Noticias noticias, Long idFavorite) {
 		log.info("Inicio método actualizarFavoritos");
 		NoticiasResponseRest response = new NoticiasResponseRest();
 		try {
@@ -107,7 +109,7 @@ private static final Logger log = (Logger) LoggerFactory.getLogger(NoticiasServi
 
 	@Override
 	@Transactional
-	public ResponseEntity<NoticiasResponseRest> guardarFavorito(Noticias noticias) {
+	public ResponseEntity<NoticiasResponseRest> savefavs(Noticias noticias) {
 		log.info("Inicio método guardarNoticia");
 		NoticiasResponseRest response = new NoticiasResponseRest();
 		int validacion = validarDatosNulos(noticias);	
@@ -171,7 +173,7 @@ private static final Logger log = (Logger) LoggerFactory.getLogger(NoticiasServi
 
 	@Override
 	@Transactional
-	public ResponseEntity<NoticiasResponseRest> borrarFavoritos(Long idFavorite) {
+	public ResponseEntity<NoticiasResponseRest> deletefavs(Long idFavorite) {
 		log.info("Inicio método guardarNoticia");
 		NoticiasResponseRest response = new NoticiasResponseRest();
 		try {
