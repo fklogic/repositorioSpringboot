@@ -26,16 +26,13 @@ private static final Logger Logger = null;
 	
 	@Override
 	public ResponseEntity<NoticiasResponseRest> savefavs(Noticias noticia){
-		Logger.info("Inicio De Guardar Pregunta");
+		Logger.info("Inicio De Guardar noticia");
 		NoticiasResponseRest response = new NoticiasResponseRest();				
 		Noticias noticia1=new Noticias();		
 			try {	
-					noticia1.setDescripcion(noticia1.getDescripcion());
-			    	noticia1.setPregunta(noticia1.getPregunta());
-			    	noticia1.setSeccion(seccionPregunta.get());
-			    	noticia1.setUsuario(usuarioPrgunta.get());		      
+					n		      
 			        nDao.save(noticia1);		         
-			        response.getPreguntasResponse().setPregunta(newpregunta);
+			        response.o().setPregunta(newpregunta);
 			         
 			        		        
 							
