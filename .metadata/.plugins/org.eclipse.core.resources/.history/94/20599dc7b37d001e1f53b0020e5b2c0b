@@ -1,0 +1,39 @@
+package com.pruebasodexo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.pruebasodexo.models.Noticias;
+import com.pruebasodexo.responce.NoticiasResponseRest;
+
+import service.INoticiasService;
+
+@RestController
+@RequestMapping("/apiSodexo")
+public class Noticiascontroller {
+	
+	@Autowired
+	private INoticiasService service;
+	
+	
+	@PostMapping("/guardarFavorito")
+	public ResponseEntity<NoticiasResponseRest> guardarFavorito(@RequestBody Noticias request){
+		ResponseEntity<NoticiasResponseRest> response = service.guardarFavorito(request);
+		return response;
+	}
+	
+	@DeleteMapping("/borrarFavoritos/{idFavorite}")
+	public ResponseEntity<NoticiasResponseRest> borrarFavoritos(@PathVariable Long idFavorite){
+		ResponseEntity<NoticiasResponseRest> response = service.borrarFavoritos(idFavorite);
+		return response;
+	}
+
+}

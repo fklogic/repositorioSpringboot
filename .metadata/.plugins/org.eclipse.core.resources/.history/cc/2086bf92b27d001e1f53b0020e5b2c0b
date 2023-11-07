@@ -1,0 +1,66 @@
+package service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.pruebasodexo.models.Noticias;
+import com.pruebasodexo.responce.NoticiasResponseRest;
+
+import dao.NoticiasDao;
+import jakarta.transaction.Transactional;
+
+public class NoticiasServiceImp implements INoticiasService{
+private static final Logger Logger = null;
+
+
+	
+	@Autowired
+	private NoticiasDao nDao;
+	
+	@Override
+	public ResponseEntity<PreguntasResponseRest> savefavs(PreguntaRecepcion pregunta){
+		LOGGER.info("Inicio De Guardar Pregunta");
+		PreguntasResponseRest response = new PreguntasResponseRest();
+		int validacion = validarDatosNulos(pregunta);		
+		Preguntas newpregunta=new Preguntas();
+		if (validacion == 0) {
+			try {	
+				
+				Optional<Seccion> seccionPregunta = seccionesDao.findById(pregunta.getId_seccion());
+			    if (seccionPregunta.isPresent()) {
+			    	Optional<Usuario> usuarioPrgunta= usuarioDao.findById(pregunta.getId_usuario());
+					newpregunta.setDescripcion(pregunta.getDescripcion());
+					newpregunta.setPregunta(pregunta.getPregunta());
+					newpregunta.setSeccion(seccionPregunta.get());
+					newpregunta.setUsuario(usuarioPrgunta.get());		      
+			        preguntasDao.save(newpregunta);		         
+			        response.getPreguntasResponse().setPregunta(newpregunta);
+			         
+			        
+			        
+				} else {			
+					LOGGER.error("Pregunta no guardada");
+					response.setMetada("Respuesta no OK", "-1", "No se guardó pregunta");
+					return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+				}				
+			}catch (Exception e) {
+				LOGGER.error("error en proceso de guardar pregunta");
+				response.setMetada("respuesta no OK", "-1", "Error al guardar pregunta");
+				return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			} 		
+				response.setMetada("Respuesta ok", "200", "pregunta guardada");
+				return new ResponseEntity<>(response, HttpStatus.OK);
+		}
+	}
+
+
+
+
+}

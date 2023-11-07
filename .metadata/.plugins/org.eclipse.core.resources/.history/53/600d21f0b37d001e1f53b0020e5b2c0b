@@ -1,0 +1,59 @@
+package service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.pruebasodexo.models.Noticias;
+import com.pruebasodexo.responce.NoticiasResponseRest;
+
+import dao.NoticiasDao;
+import jakarta.transaction.Transactional;
+
+public class NoticiasServiceImp implements INoticiasService{
+private static final Logger Logger = null;
+
+
+	
+	@Autowired
+	private NoticiasDao nDao;
+	
+	@Override
+	public  savefavs(Noticias noticia){
+		LOGGER.info("Inicio De Guardar Pregunta");
+		PreguntasResponseRest response = new PreguntasResponseRest();
+		int validacion = validarDatosNulos(pregunta);		
+		Noticias noticia=new Noticias();
+		if (validacion == 0) {
+			try {	
+				
+			    	noticia.setDescripcion(noticia.getDescripcion());
+			    	noticia.setPregunta(noticia.getPregunta());
+			    	noticia.setSeccion(seccionPregunta.get());
+			    	noticia.setUsuario(usuarioPrgunta.get());		      
+			        nDao.save(noticia);		         
+			        response.getPreguntasResponse().setPregunta(newpregunta);
+			         
+			        
+			        
+							
+			}catch (Exception e) {
+				LOGGER.error("error en proceso de guardar pregunta");
+				response.setMetada("respuesta no OK", "-1", "Error al guardar pregunta");
+				return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			} 		
+				response.setMetada("Respuesta ok", "200", "pregunta guardada");
+				return new ResponseEntity<>(response, HttpStatus.OK);
+		}
+	}
+
+
+
+
+}

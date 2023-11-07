@@ -29,10 +29,10 @@ public class Noticias {
 		private String url;
 
 		@Column(name = "image_url", length = 255)
-		private String imageUrl;
+		private String image_Url;
 		
 		@Column(name = "news_site", length = 255)
-		private String newsSite;
+		private String news_Site;
 		
 		@Column(name = "summary", length = 512)
 		private String summary;

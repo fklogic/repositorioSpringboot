@@ -7,9 +7,7 @@ import com.pruebasodexo.responce.NoticiasResponseRest;
 
 public interface INoticiasService {
 	
-	public ResponseEntity<NoticiasResponseRest> obtenerfavs();
-	public ResponseEntity<NoticiasResponseRest> findnoticiabyname(String title);
-	public ResponseEntity<NoticiasResponseRest> actfav(Noticias noticias, Long idFavorite);
+	
 	public ResponseEntity<NoticiasResponseRest> savefavs(Noticias noticias);
 	public ResponseEntity<NoticiasResponseRest> deletefavs(Long idFavorite);
 

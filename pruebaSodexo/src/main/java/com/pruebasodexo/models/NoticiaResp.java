@@ -1,0 +1,90 @@
+package com.pruebasodexo.models;
+
+import java.sql.Date;
+
+import org.hibernate.mapping.List;
+
+public class NoticiaResp {
+	
+	private Long id;
+    private String title;
+    private String url;
+    private String image_url;
+    private String news_site;
+    private String summary;
+    private Date published_at;
+    private Date updated_at;
+    private boolean featured;
+    private List launches;
+    private List events;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public String getImage_url() {
+		return image_url;
+	}
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+	}
+	public String getNews_site() {
+		return news_site;
+	}
+	public void setNews_site(String news_site) {
+		this.news_site = news_site;
+	}
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	public Date getPublished_at() {
+		return published_at;
+	}
+	public void setPublished_at(Date published_at) {
+		this.published_at = published_at;
+	}
+	public Date getUpdated_at() {
+		return updated_at;
+	}
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}
+	public boolean isFeatured() {
+		return featured;
+	}
+	public void setFeatured(boolean featured) {
+		this.featured = featured;
+	}
+	public List getLaunches() {
+		return launches;
+	}
+	public void setLaunches(List launches) {
+		this.launches = launches;
+	}
+	public List getEvents() {
+		return events;
+	}
+	public void setEvents(List events) {
+		this.events = events;
+	}
+    
+    
+    
+
+}
